@@ -10,6 +10,9 @@ Nous disposons alors de deux clients qui communiquent entre eux via un Brocker.
 Pour se faire, nous utiliserons [RabbitMQ](https://www.rabbitmq.com/) et le langage de programmation [Golang](https://golang.org/).
 
 
+ ![home](rabbitmq/applications/images/ff.png)
+
+
 ## Réalisation
 ```bash
 #Création d'un nouveau network 
