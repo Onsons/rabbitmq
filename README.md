@@ -4,10 +4,10 @@ Réalisé par : Ons Tliba - GL5 INSAT
 Durant ce TP, nous allons se baser sur le paradigme Publish/Subscrib afin de mettre en oeuvre une communication asynchrone dans un système d'objets connectés. 
 
 
-Nous disposons alors de deux clients qui communiquent entre eux via un [brocker](https://pip.pypa.io/en/stable/). 
+Nous disposons alors de deux clients qui communiquent entre eux via un Brocker.
 
 
-Pour se faire, nous utiliserons [RabbitMq](https://pip.pypa.io/en/stable/) et le langage de programmation [Golang](https://pip.pypa.io/en/stable/).
+Pour se faire, nous utiliserons [RabbitMQ](https://www.rabbitmq.com/) et le langage de programmation [Golang](https://golang.org/).
 
 
 ## Réalisation
@@ -36,19 +36,23 @@ Desormais, vous pouvez naviguer sur le Dashboard et se connecter avec guest/gues
 Passons mainetenant au code ! Dans un répertoire rabbitmq/applications/ nous allons créer deux répertoires consumer et publisher qui vont basculer le travail ultérieurement. 
 
 Via une méthode Http Post, le client envoie périodiquement un message que le publisher va publier dans une queue et ensuite le consumer va consommer. (Voir le code)
-Une fois le message est consommé, les roles vont se basculer. Le consumer enverra un message ver le producer pour le notifier. 
+Une fois le message est consommé, les roles vont se basculer. Le consumer enverra un message vers le producer pour le notifier du prix. 
 
 ## Exécution 
 ```bash
 #Executer le producer
 docker build . -t aimvector/rabbitmq-publisher:v1.0.0
-docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e RABBIT_USERNAME=guest -e RABBIT_PASSWORD=guest -p 82:82 aimvector/rabbitmq-publisher:v1.0.0
+docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e RABBIT_USERNAME=guest -e RABBIT_PASSWORD=guest -p 83:83 aimvector/rabbitmq-publisher:v1.0.0
 #Executer le consumer
 docker build . -t aimvector/rabbitmq-consumer:v1.0.0
 docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e RABBIT_USERNAME=guest -e RABBIT_PASSWORD=guest aimvector/rabbitmq-consumer:v1.0.0
 ```
 ### Partie 1 : Du Producer vers le Consumer 
-❮img src="https://github.com/Onsons/rabbitmq/tree/master/rabbitmq/applications/images/RunPublisher.png" ❯
-❮img src="https://github.com/Onsons/rabbitmq/tree/master/rabbitmq/applications/images/RunConsumer.png" ❯
-### Partie 2 : Le Consumer joue le role de Producer ... 
+ ![home](rabbitmq/applications/images/RunPublisher.png)
 
+ ![home](rabbitmq/applications/images/RunConsumer.png)
+
+### Partie 2 : Le Consumer joue le role de Producer ... 
+ ![home](rabbitmq/applications/images/conusumer.png)
+
+ ![home](rabbitmq/applications/images/producer.png)

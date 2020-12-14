@@ -20,6 +20,7 @@ func main() {
 	router := httprouter.New()
 	router.POST("/publish/:message", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		submit(w, r, p)
+		consume()
 	})
 	fmt.Println("Running...")
 	log.Fatal(http.ListenAndServe(":83", router))
