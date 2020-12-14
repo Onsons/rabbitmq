@@ -48,7 +48,7 @@ docker build . -t aimvector/rabbitmq-consumer:v1.0.0
 docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e RABBIT_USERNAME=guest -e RABBIT_PASSWORD=guest aimvector/rabbitmq-consumer:v1.0.0
 ```
 ### Partie 1 : Du Producer vers le Consumer 
-❮img src="rabbitmq/applications/images/RunPublisher.png" ❯
-❮img src="rabbitmq/applications/images/RunConsumer.png" ❯
+❮img src="https://github.com/Onsons/rabbitmq/tree/master/rabbitmq/applications/images/RunPublisher.png" ❯
+❮img src="https://github.com/Onsons/rabbitmq/tree/master/rabbitmq/applications/images/RunConsumer.png" ❯
 ### Partie 2 : Le Consumer joue le role de Producer ... 
 
