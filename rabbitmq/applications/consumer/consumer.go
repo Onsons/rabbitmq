@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"os"
 
 	log "github.com/sirupsen/logrus"
@@ -16,12 +15,7 @@ var rabbit_password = os.Getenv("RABBIT_PASSWORD")
 
 func main() {
 	consume()
-	router := httprouter.New()
-	router.POST("/publisher/:message", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-		submit(w, r, p)
-	})
-	fmt.Println("Running...")
-	log.Fatal(http.ListenAndServe(":82", router))
+
 }
 
 func consume() {
@@ -75,6 +69,7 @@ func consume() {
 	go func() {
 		for d := range msgs {
 			log.Printf("Production: %s", d.Body)
+			submit()
 			d.Ack(false)
 		}
 
@@ -85,9 +80,8 @@ func consume() {
 
 }
 
-func submit(writer http.ResponseWriter, request *http.Request, p httprouter.Params) {
-	message := p.ByName("message")
-
+func submit() {
+	message := "100"
 	fmt.Println("Prix:" + message)
 
 	conn, err := amqp.Dial("amqp://" + rabbit_user + ":" + rabbit_password + "@" + rabbit_host + ":" + rabbit_port + "/")
