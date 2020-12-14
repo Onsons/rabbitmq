@@ -53,6 +53,6 @@ docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e
  ![home](rabbitmq/applications/images/RunConsumer.png)
 
 ### Partie 2 : Le Consumer joue le role de Producer ... 
- ![home](rabbitmq/applications/images/conusumer.png)
+ ![home](rabbitmq/applications/images/conusmer.png)
 
  ![home](rabbitmq/applications/images/producer.png)
