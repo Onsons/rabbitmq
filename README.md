@@ -47,3 +47,6 @@ docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e
 docker build . -t aimvector/rabbitmq-consumer:v1.0.0
 docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e RABBIT_USERNAME=guest -e RABBIT_PASSWORD=guest aimvector/rabbitmq-consumer:v1.0.0
 ```
+### Partie 1 : Du Producer vers le Consumer 
+### Partie 2 : Du Consumer vers le Producer
+
