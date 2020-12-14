@@ -27,7 +27,7 @@ docker exec -it rabbit-1 bash
 #Lister les plugins 
 rabbitmq-plugins list 
 #Sortir du container et activer le port  15672
-docker run -d --rm --net rabbits -p 8083:15672 --hostname rabbit-1 --name rabbit-1 rabbitmq:3.8
+docker run -d --rm --net rabbits -p 8082:15672 --hostname rabbit-1 --name rabbit-1 rabbitmq:3.8
 #Se localiser dans le container une nouvelle fois et activer rabbitmq_management
 rabbitmq-plugins enable rabbitmq_management
 ```
@@ -42,11 +42,13 @@ Une fois le message est consommé, les roles vont se basculer. Le consumer enver
 ```bash
 #Executer le producer
 docker build . -t aimvector/rabbitmq-publisher:v1.0.0
-docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e RABBIT_USERNAME=guest -e RABBIT_PASSWORD=guest -p 83:83 aimvector/rabbitmq-publisher:v1.0.0
+docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e RABBIT_USERNAME=guest -e RABBIT_PASSWORD=guest -p 82:82 aimvector/rabbitmq-publisher:v1.0.0
 #Executer le consumer
 docker build . -t aimvector/rabbitmq-consumer:v1.0.0
 docker run -it --rm --net rabbits -e RABBIT_HOST=rabbit-1 -e RABBIT_PORT=5672 -e RABBIT_USERNAME=guest -e RABBIT_PASSWORD=guest aimvector/rabbitmq-consumer:v1.0.0
 ```
 ### Partie 1 : Du Producer vers le Consumer 
-### Partie 2 : Du Consumer vers le Producer
+❮img src="rabbitmq/applications/images/RunPublisher.png" ❯
+❮img src="rabbitmq/applications/images/RunConsumer.png" ❯
+### Partie 2 : Le Consumer joue le role de Producer ... 
 
